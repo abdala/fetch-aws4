@@ -1,0 +1,38 @@
+{
+  "name": "fetch-aws4",
+  "version": "1.0.0",
+  "description": "Fetch wrap to add AWS v4 signature to the request",
+  "main": "fetch.js",
+  "type": "fetch.d.ts",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "mocha": {
+    "require": "ts-node/register"
+  },
+  "keywords": [
+    "aws",
+    "awsv4",
+    "fetch",
+    "http"
+  ],
+  "author": "Abdala Cerqueira",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "aws4": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/aws4": "^1.5.1",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.5",
+    "@types/node-fetch": "^2.5.7",
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "eslint": "^7.1.0",
+    "jest": "^26.0.1",
+    "mockdate": "^3.0.2",
+    "node-fetch": "^2.6.0",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.3"
+  }
+}
