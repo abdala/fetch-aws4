@@ -16,9 +16,9 @@ void (async () => {
     // Passing credentials as options
     const response = await fetch('https://httpbin.org/html', {
         credentials: {
-            accessKeyId: 'key';
-            secretAccessKey: 'secret;
-            sessionToken: 'optional token';
+            accessKeyId: 'key',
+            secretAccessKey: 'secret',
+            sessionToken: 'optional token',
         }
     });
     console.log(await response.text());

@@ -2,10 +2,12 @@
   "name": "fetch-aws4",
   "version": "1.0.0",
   "description": "Fetch wrap to add AWS v4 signature to the request",
-  "main": "fetch.js",
-  "type": "fetch.d.ts",
+  "main": "dist/index.js",
+  "type": "dist/index.d.ts",
   "scripts": {
-    "test": "npx jest"
+    "prepublish": "tsc",
+    "build": "tsc",
+    "test": "jest"
   },
   "mocha": {
     "require": "ts-node/register"
