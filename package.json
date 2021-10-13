@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Fetch wrap to add AWS v4 signature to the request",
   "main": "dist/index.js",
-  "type": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prepublish": "tsc",
     "build": "tsc",
