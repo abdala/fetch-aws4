@@ -13,5 +13,6 @@ export interface V4RequestInit extends RequestInit {
 	region?: string;
 	service?: string;
 	host?: string;
+	body?: string;
 	credentials?: Credentials;
 }
