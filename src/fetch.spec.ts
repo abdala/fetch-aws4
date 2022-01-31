@@ -1,9 +1,11 @@
 import MockDate from 'mockdate';
 import { wrapper } from './fetch';
 import { V4FetchFunction } from './types';
+import {jest} from '@jest/globals';
+import {Mock} from 'jest-mock';
 
 describe('AWS v4 fetch wrapper', () => {
-    let stubFetch: jest.Mock;
+    let stubFetch: Mock<any, any>;
     let fetch: V4FetchFunction;
 
     beforeAll(() => {
@@ -151,7 +153,7 @@ describe('AWS v4 fetch wrapper', () => {
                 Host: "example.site",
                 'X-Amz-Date': "20191231T230000Z",
                 'Content-Type': 'application/json',
-                'Content-Length': 15,
+                'Content-Length': '15',
             },
             host: "example.site",
             method: 'POST',
@@ -175,7 +177,7 @@ describe('AWS v4 fetch wrapper', () => {
                 Host: "s3.us-west-2.amazonaws.com",
                 'X-Amz-Date': "20191231T230000Z",
                 'Content-Type': 'application/json',
-                'Content-Length': 15,
+                'Content-Length': '15',
                 'X-Amz-Content-Sha256': "e43abcf3375244839c012f9633f95862d232a95b00d5bc7348b3098b9fed7f32",
             },
             host: "s3.us-west-2.amazonaws.com",
