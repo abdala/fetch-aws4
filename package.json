@@ -5,6 +5,10 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdala/fetch-aws4.git"
+  },
   "scripts": {
     "prepublish": "tsc",
     "build": "tsc",
