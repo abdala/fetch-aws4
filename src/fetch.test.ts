@@ -1,26 +1,25 @@
 import nock from 'nock'
-import MockDate from 'mockdate'
 import fetch from './fetch'
-import {it, describe, beforeEach} from 'node:test'
+import {it, test, beforeEach} from 'node:test'
 import assert from 'node:assert/strict'
-
-MockDate.set('2020-01-01T00:00:00')
 
 nock.disableNetConnect()
 
-describe('AWS v4 fetch wrapper', () => {
+test('AWS v4 fetch wrapper', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'], now: 1577833200000 })
+  
   beforeEach(() => {
     process.env.AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID'
     process.env.AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY'
   })
 
-  it('Return original fetch response', async () => {
+  await t.test('Return original fetch response', async () => {
     nock('http://example.site').get('/').reply(200)
 
     await fetch('http://example.site')
   })
 
-  it('Sign a request with environment credentials', async () => {
+  await t.test('Sign a request with environment credentials', async () => {
     nock('http://example.site')
       .matchHeader(
         'Authorization',
@@ -34,7 +33,7 @@ describe('AWS v4 fetch wrapper', () => {
     await fetch('http://example.site')
   })
 
-  it('Sign a request with credentials', async () => {
+  await t.test('Sign a request with credentials', async () => {
     nock('http://example.site')
       .matchHeader(
         'Authorization',
@@ -53,14 +52,14 @@ describe('AWS v4 fetch wrapper', () => {
     })
   })
 
-  it('Throw exception when credentials are not defined', async () => {
+  await t.test('Throw exception when credentials are not defined', async () => {
     delete process.env.AWS_ACCESS_KEY_ID
     delete process.env.AWS_SECRET_ACCESS_KEY
 
     await assert.rejects(fetch('http://example.site'), new Error('Credentials not defined.'))
   })
 
-  it('Sign a request with query string', async () => {
+  await t.test('Sign a request with query string', async () => {
     nock('http://example.site')
       .matchHeader(
         'Authorization',
@@ -75,7 +74,7 @@ describe('AWS v4 fetch wrapper', () => {
     await fetch('http://example.site?key=value')
   })
 
-  it('Sign a request with region', async () => {
+  await t.test('Sign a request with region', async () => {
     nock('http://example.site')
       .matchHeader(
         'Authorization',
@@ -92,7 +91,7 @@ describe('AWS v4 fetch wrapper', () => {
     })
   })
 
-  it('Sign a request with path', async () => {
+  await t.test('Sign a request with path', async () => {
     nock('http://example.site')
       .matchHeader(
         'Authorization',
@@ -109,7 +108,7 @@ describe('AWS v4 fetch wrapper', () => {
     })
   })
 
-  it('Sign a post request', async () => {
+  await t.test('Sign a post request', async () => {
     nock('http://example.site')
       .matchHeader(
         'Authorization',
@@ -134,7 +133,7 @@ describe('AWS v4 fetch wrapper', () => {
     })
   })
 
-  it('Sign a AWS call', async () => {
+  await t.test('Sign a AWS call', async () => {
     nock('https://s3.us-west-2.amazonaws.com')
       .matchHeader(
         'Authorization',
